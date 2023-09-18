@@ -1,0 +1,25 @@
+{
+  "name": "《数字》",
+  "num": 16,
+  "type": "shuffle",
+  "reference": "bg.png",
+  "answer": [
+    "split/num_01.gif",
+    "split/num_02.gif",
+    "split/num_03.gif",
+    "split/num_04.gif",
+    "split/num_05.gif",
+    "split/num_06.gif",
+    "split/num_07.gif",
+    "split/num_08.gif",
+    "split/num_09.gif",
+    "split/num_10.gif",
+    "split/num_11.gif",
+    "split/num_12.gif",
+    "split/num_13.gif",
+    "split/num_14.gif",
+    "split/num_15.gif",
+    "split/num_16.gif"
+  ],
+  "deletion": "split/num_13.gif"
+}

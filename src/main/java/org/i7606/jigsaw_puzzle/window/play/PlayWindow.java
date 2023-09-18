@@ -81,9 +81,10 @@ public class PlayWindow extends Stage {
     }
 
     private void manage() {
-        String no1 = "level-001";
-//        String no1 = "level-002";
-        factory = new LevelBuild(no1, this);
+//        String levelNamme = "level-001";
+//        String levelNamme = "level-002";
+        String levelNamme = "level-test";
+        factory = new LevelBuild(levelNamme, this);
         factory.build();
     }
 
