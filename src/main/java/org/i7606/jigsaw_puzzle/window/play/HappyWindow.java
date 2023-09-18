@@ -2,10 +2,12 @@ package org.i7606.jigsaw_puzzle.window.play;
 
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import org.i7606.jigsaw_puzzle.commons.utils.UrlUtil;
 
 
 /**
@@ -43,6 +45,7 @@ public class HappyWindow extends Stage {
         setAlwaysOnTop(true);
         initModality(Modality.WINDOW_MODAL);
         initOwner(parentStage);
+        getIcons().add(new Image(UrlUtil.getURLStream("images/icon.png")));
     }
 
 

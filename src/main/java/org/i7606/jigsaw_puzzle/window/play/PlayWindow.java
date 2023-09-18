@@ -78,6 +78,7 @@ public class PlayWindow extends Stage {
         setResizable(false);
         setHeight(AppConsts.WINDOW_HEIGHT);
         setWidth(AppConsts.WINDOW_WIDTH);
+        getIcons().add(new Image(UrlUtil.getURLStream("images/icon.png")));
     }
 
     private void manage() {
