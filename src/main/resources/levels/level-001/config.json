@@ -1,0 +1,17 @@
+{
+  "name": "《美女油画》",
+  "num": 9,
+  "type": "shuffle",
+  "answer": [
+    "split/g1.gif",
+    "split/g2.gif",
+    "split/g3.gif",
+    "split/g4.gif",
+    "split/g5.gif",
+    "split/g6.gif",
+    "split/g7.gif",
+    "split/g8.gif",
+    "split/g9.gif"
+  ],
+  "deletion": "split/g7.gif"
+}

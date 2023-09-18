@@ -1,0 +1,100 @@
+15:54:04.276 [main                     ] DEBUG Logger               - Configured Logger
+15:54:04.299 [main                     ] DEBUG GameApplication      - Logging settings
+Title: 拼图画板——jigsaw puzzle
+Version: 0.1.0
+Width: 500
+Height: 500
+Fullscreen: false
+Intro: false
+Profiling: false
+Single step:false
+App Mode: DEVELOPER
+Menu Key: ESCAPE
+Stage Style: DECORATED
+Scene Factory: class com.almasb.fxgl.app.scene.SceneFactory
+
+15:54:04.582 [JavaFX Application Thread] DEBUG FXGLApplication      - Initializing FXGL
+15:54:04.586 [JavaFX Application Thread] INFO  Engine               - FXGL-17.3 (30.03.2023 11.49) on WINDOWS (J:17.0.4 FX:20)
+15:54:04.587 [JavaFX Application Thread] DEBUG Engine               - JRE Vendor Name: Oracle Corporation
+15:54:04.587 [JavaFX Application Thread] DEBUG Engine               - Running on OS: Windows 11 version 10.0
+15:54:04.587 [JavaFX Application Thread] DEBUG Engine               - Architecture: amd64
+15:54:04.587 [JavaFX Application Thread] INFO  Engine               - Source code and latest versions at: https://github.com/AlmasB/FXGL
+15:54:04.587 [JavaFX Application Thread] INFO  Engine               -       Ask questions and discuss at: https://github.com/AlmasB/FXGL/discussions
+15:54:04.587 [JavaFX Application Thread] INFO  Engine               -              Join the FXGL chat at: https://gitter.im/AlmasB/FXGL
+15:54:04.659 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Creating a JavaFX scene
+15:54:04.698 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Target settings size: 500.0 x 500.0
+15:54:04.699 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Scaled scene size:    500.0 x 500.0
+15:54:04.699 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Scaled ratio: (1.0, 1.0)
+15:54:04.700 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Set initial scene to FXGLStartupScene
+15:54:04.702 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Opening main window
+15:54:04.904 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Window border size: (14.66668701171875, 37.33331298828125)
+15:54:04.904 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Scaled size: 500.0 x 500.0
+15:54:04.904 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Scaled ratio: (1.0, 1.0)
+15:54:04.904 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Scene size: 500.0 x 500.0
+15:54:04.904 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Stage size: 514.6666870117188 x 537.3333129882812
+15:54:04.910 [FXGL Background Thread 1 ] DEBUG Engine               - Initializing environment variables
+15:54:04.935 [FXGL Background Thread 1 ] DEBUG FXGLAssetLoaderServi - User app class for loading assets: class org.i7606.jigsaw_puzzle.window.play.PlayWindow
+15:54:04.935 [FXGL Background Thread 1 ] DEBUG GameApplicationServi - Applying CSS: fxgl_dark.css
+15:54:04.936 [FXGL Background Thread 1 ] DEBUG FXGLAssetLoaderServi - Loading from file system: jar:file:/D:/data/MAVEN/repo/com/github/almasb/fxgl/17.3/fxgl-17.3.jar!/fxglassets/ui/css/fxgl_dark.css
+15:54:04.964 [FXGL Background Thread 1 ] DEBUG GameApplicationServi - Initializing application scenes
+15:54:05.015 [FXGL Background Thread 1 ] DEBUG GameWorld            - Game world initialized
+15:54:05.049 [FXGL Background Thread 1 ] DEBUG PhysicsWorld         - Physics world initialized: appHeight=500, physics.ppm=50.0
+15:54:05.050 [FXGL Background Thread 1 ] DEBUG PhysicsWorld         - Using strategy: BRUTE_FORCE
+15:54:05.055 [FXGL Background Thread 1 ] DEBUG GameScene            - Game scene initialized: 500x500
+15:54:05.064 [FXGL Background Thread 1 ] WARN  FXGL.DefaultMenu     - FXGLDefaultMenu is not designed for resolutions < 800x600
+15:54:05.064 [FXGL Background Thread 1 ] DEBUG FXGL.DefaultMenu     - createMenuBodyGameMenu()
+15:54:05.075 [FXGL Background Thread 1 ] DEBUG FXGL.DefaultMenu     - createOptionsMenu()
+15:54:05.085 [FXGL Background Thread 1 ] DEBUG FXGLAssetLoaderServi - Loading from file system: jar:file:/D:/data/MAVEN/repo/com/github/almasb/fxgl/17.3/fxgl-17.3.jar!/fxglassets/textures/particles/smoke.png
+15:54:05.172 [FXGL Background Thread 1 ] DEBUG FXGLAssetLoaderServi - Loading from file system: jar:file:/D:/data/MAVEN/repo/com/github/almasb/fxgl/17.3/fxgl-17.3.jar!/fxglassets/textures/particles/trace_horizontal.png
+15:54:05.199 [FXGL Background Thread 1 ] DEBUG GameApplicationServi - Application scenes initialized
+15:54:05.214 [FXGL Background Thread 1 ] DEBUG SystemBundleService  - Loading FXGL system data
+15:54:05.218 [FXGL Background Thread 1 ] DEBUG FileSystemAccess     - Reading from: E:\data\GITEE\jigsaw_puzzle\jigsaw_puzzle\system\fxgl.bundle
+15:54:05.223 [FXGL Background Thread 1 ] DEBUG SystemBundleService  - Bundle FXGL: {}
+15:54:05.223 [FXGL Background Thread 1 ] DEBUG UpdaterService       - Checking for updates
+15:54:05.226 [FXGL Background Thread 4 ] DEBUG FXGLApplication      - Loading fonts
+15:54:05.226 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: jar:file:/D:/data/MAVEN/repo/com/github/almasb/fxgl/17.3/fxgl-17.3.jar!/fxglassets/ui/fonts/VarelaRound-Regular.ttf
+15:54:05.227 [FXGL Background Thread 1 ] DEBUG FXGLApplication      - Loading default localization
+15:54:05.228 [FXGL Background Thread 1 ] DEBUG FXGLAssetLoaderServi - Loading from file system: jar:file:/D:/data/MAVEN/repo/com/github/almasb/fxgl/17.3/fxgl-17.3.jar!/fxglassets/languages/english.lang
+15:54:05.262 [FXGL Background Thread 1 ] INFO  FXGLApplication      - FXGL initialization took: 0.352 sec
+15:54:05.263 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from file system: jar:file:/D:/data/MAVEN/repo/com/github/almasb/fxgl/17.3/fxgl-17.3.jar!/fxglassets/textures/fxgl_icon.png
+15:54:05.281 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from file system: jar:file:/D:/data/MAVEN/repo/com/github/almasb/fxgl/17.3/fxgl-17.3.jar!/fxglassets/textures/fxgl_default_cursor.png
+15:54:05.298 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: jar:file:/D:/data/MAVEN/repo/com/github/almasb/fxgl/17.3/fxgl-17.3.jar!/fxglassets/ui/fonts/Abel-Regular.ttf
+15:54:05.300 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: jar:file:/D:/data/MAVEN/repo/com/github/almasb/fxgl/17.3/fxgl-17.3.jar!/fxglassets/ui/fonts/TerminalLandMono-Regular.otf
+15:54:05.302 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: jar:file:/D:/data/MAVEN/repo/com/github/almasb/fxgl/17.3/fxgl-17.3.jar!/fxglassets/ui/fonts/Courier-Prime.ttf
+15:54:05.309 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Screenshot - CTRL+8
+15:54:05.310 [JavaFX Application Thread] DEBUG Input                - Registered new binding: System info dump - CTRL+9
+15:54:05.311 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Restart - CTRL+R
+15:54:05.313 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Toggle Debug Camera - CTRL+7
+15:54:05.322 [JavaFX Application Thread] DEBUG LoopRunner           - Starting loop
+15:54:05.322 [JavaFX Application Thread] DEBUG LoopRunner           - Initializing JavaFX AnimationTimerLoop
+15:54:05.326 [JavaFX Application Thread] DEBUG GameApplicationServi - Starting new game
+15:54:05.327 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+15:54:05.339 [JavaFX Application Thread] DEBUG GameApplicationServi - Removing overlay from FXGLStartupScene and adding to FXGLLoadingScene
+15:54:05.339 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - FXGLStartupScene -> FXGLLoadingScene
+15:54:05.339 [JavaFX Application Thread] DEBUG GameApplicationServi - Clearing previous game
+15:54:05.339 [JavaFX Application Thread] DEBUG GameScene            - Clearing game scene
+15:54:05.339 [JavaFX Application Thread] DEBUG GameWorld            - Clearing game world
+15:54:05.339 [JavaFX Application Thread] DEBUG PhysicsWorld         - Clearing physics world
+15:54:05.343 [JavaFX Application Thread] DEBUG FXGLApplication      - Registering font factories with UI factory
+15:54:05.343 [FXGL Background Thread 4 ] DEBUG FXGLApplication      - Initializing game
+15:54:05.486 [FXGL Background Thread 2 ] WARN  UpdaterService       - Failed to find updates: java.net.UnknownHostException: raw.githubusercontent.com
+15:54:05.535 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/E:/data/GITEE/jigsaw_puzzle/jigsaw_puzzle/target/classes/assets/textures/level-001/split/g1.gif
+15:54:05.567 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/E:/data/GITEE/jigsaw_puzzle/jigsaw_puzzle/target/classes/assets/textures/level-001/split/g2.gif
+15:54:05.579 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/E:/data/GITEE/jigsaw_puzzle/jigsaw_puzzle/target/classes/assets/textures/level-001/split/g3.gif
+15:54:05.593 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/E:/data/GITEE/jigsaw_puzzle/jigsaw_puzzle/target/classes/assets/textures/level-001/split/g4.gif
+15:54:05.602 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/E:/data/GITEE/jigsaw_puzzle/jigsaw_puzzle/target/classes/assets/textures/level-001/split/g5.gif
+15:54:05.608 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/E:/data/GITEE/jigsaw_puzzle/jigsaw_puzzle/target/classes/assets/textures/level-001/split/g6.gif
+15:54:05.614 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/E:/data/GITEE/jigsaw_puzzle/jigsaw_puzzle/target/classes/assets/textures/level-001/split/g7.gif
+15:54:05.620 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/E:/data/GITEE/jigsaw_puzzle/jigsaw_puzzle/target/classes/assets/textures/level-001/split/g8.gif
+15:54:05.625 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/E:/data/GITEE/jigsaw_puzzle/jigsaw_puzzle/target/classes/assets/textures/level-001/split/g9.gif
+15:54:05.635 [FXGL Background Thread 4 ] INFO  FXGLApplication      - Game initialization took: 0.292 sec
+15:54:05.635 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+15:54:05.641 [JavaFX Application Thread] DEBUG GameApplicationServi - Removing overlay from FXGLLoadingScene and adding to GameScene
+15:54:05.641 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - FXGLLoadingScene -> GameScene
+15:54:07.800 [JavaFX Application Thread] DEBUG FXGLApplication      - Exiting FXGL
+15:54:07.800 [JavaFX Application Thread] DEBUG LoopRunner           - Stopping loop
+15:54:07.800 [JavaFX Application Thread] DEBUG SystemBundleService  - Saving FXGL system data
+15:54:07.805 [JavaFX Application Thread] DEBUG FileSystemAccess     - Writing to: E:\data\GITEE\jigsaw_puzzle\jigsaw_puzzle\system\fxgl.bundle
+15:54:07.806 [JavaFX Application Thread] DEBUG Async                - Shutting down background threads
+15:54:07.806 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Closing main window
+15:54:07.831 [JavaFX Application Thread] DEBUG Logger               - Closing Logger
