@@ -35,7 +35,10 @@ public class PlayWindow extends Stage {
         resetButton.setLayoutX(AppConsts.BORDER_START_X + 200);
         resetButton.setLayoutY(AppConsts.BORDER_START_Y - 35);
         resetButton.setOnMouseClicked(mouseEvent -> {
-            factory.shuffle();
+            manage();
+            setUi();
+            // 自动调用时是根据当前内存使用情况决定，所以需要手动调用，JDK20
+            System.gc();
         });
 
         // 读取提示图片，将提示图片显示和隐藏
@@ -49,8 +52,8 @@ public class PlayWindow extends Stage {
         promptButton.setOnMouseClicked(mouseEvent -> {
 
         });
-        
-        
+
+        anchorPane.getChildren().add(resetButton);
         anchorPane.getChildren().add(promptButton);
     }
 

@@ -52,12 +52,11 @@ public class LevelBuild {
         loadResource();
     }
 
-    /**
-     * 销毁
-     */
-    public void shuffle() {
-        setLayout();
-    }
+//    @Override
+//    protected void finalize() throws Throwable {
+//        super.finalize();
+//        System.out.println(System.currentTimeMillis());
+//    }
 
     public void build() {
         anchorPane = new AnchorPane();
@@ -126,6 +125,7 @@ public class LevelBuild {
                     emptyY = i;
                     continue;
                 }
+//                System.out.println(currentEntityX + ", " + currentEntityY);
                 group.setLayoutX(currentEntityX);
                 group.setLayoutY(currentEntityY);
             }
