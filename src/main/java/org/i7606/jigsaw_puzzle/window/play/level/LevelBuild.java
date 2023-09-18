@@ -35,6 +35,7 @@ public class LevelBuild {
     private String[] answer;
     private String deletion;
     private String name;
+    private String reference;
     private HashMap<Group, String> imagesMap = new HashMap<>();
     private HashMap<String, Group> gameMap = new HashMap<>();
     private ArrayList<Group> entitys = new ArrayList<>();
@@ -45,6 +46,8 @@ public class LevelBuild {
 
     // 窗口组件
     private AnchorPane anchorPane;
+    // 参考图
+    private ImageView referenceImage;
 
     public LevelBuild(String levelName, Stage stage) {
         this.configPath = "levels/" + levelName;
@@ -69,14 +72,26 @@ public class LevelBuild {
         label.setLayoutX(AppConsts.BORDER_START_X);
         anchorPane.getChildren().add(label);
 
-        // 添加方块
+        // 添加边框
         ImageView borderImage = new ImageView(new Image(UrlUtil.getURLStream("images/border.png")));
         borderImage.setFitHeight(AppConsts.BORDER_SIZE);
         borderImage.setFitWidth(AppConsts.BORDER_SIZE);
         borderImage.setLayoutX(AppConsts.BORDER_START_X);
         borderImage.setLayoutY(AppConsts.BORDER_START_Y);
 
+        // 添加提示
+        final double REFERENCE_IMAGE_SIZE_OFFSET = 12;
+        final double REFERENCE_IMAGE_LOCATION_OFFSET = 6;
+        referenceImage = new ImageView(new Image(UrlUtil.getURLStream(configPath + "/" + reference)));
+        referenceImage.setFitHeight(AppConsts.BORDER_SIZE - REFERENCE_IMAGE_SIZE_OFFSET);
+        referenceImage.setFitWidth(AppConsts.BORDER_SIZE - REFERENCE_IMAGE_SIZE_OFFSET);
+        referenceImage.setLayoutX(AppConsts.BORDER_START_X + REFERENCE_IMAGE_LOCATION_OFFSET);
+        referenceImage.setLayoutY(AppConsts.BORDER_START_Y + REFERENCE_IMAGE_LOCATION_OFFSET);
+        // 设置不可见，需要按住按钮才可见
+        referenceImage.setVisible(false);
+
         anchorPane.getChildren().add(borderImage);
+
         for (int i = 0; i < entitys.size(); i++) {
             Group group = entitys.get(i);
             if (group.getLayoutX() == 0 || group.getLayoutY() == 0) {
@@ -84,6 +99,9 @@ public class LevelBuild {
             }
             anchorPane.getChildren().add(group);
         }
+
+        // 最后添加，不然会被小方块覆盖
+        anchorPane.getChildren().add(referenceImage);
 
         stage.setScene(new Scene(anchorPane));
     }
@@ -93,6 +111,7 @@ public class LevelBuild {
         answer = (String[]) config.get("answer");
         deletion = (String) config.get("deletion");
         name = (String) config.get("name");
+        reference = (String) config.get("reference");
 
         // 创建棋盘
         createCheckerboard((Integer) config.get("num"));
@@ -240,5 +259,9 @@ public class LevelBuild {
 
     public AnchorPane getAnchorPane() {
         return anchorPane;
+    }
+
+    public ImageView getReferenceImage() {
+        return referenceImage;
     }
 }

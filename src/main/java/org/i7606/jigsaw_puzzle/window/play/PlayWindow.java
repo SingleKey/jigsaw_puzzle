@@ -1,7 +1,9 @@
 package org.i7606.jigsaw_puzzle.window.play;
 
+import javafx.event.EventHandler;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.i7606.jigsaw_puzzle.commons.AppConsts;
@@ -15,6 +17,11 @@ import java.io.InputStream;
  * @Date 2023/9/16 16:10
  */
 public class PlayWindow extends Stage {
+
+    /**
+     * 图片按钮大小
+     */
+    private final int IMAGE_BUTTON_SIZE = 25;
 
     private LevelBuild factory;
 
@@ -30,10 +37,10 @@ public class PlayWindow extends Stage {
         InputStream urlResetStream = UrlUtil.getURLStream("images/reset.png");
         Image image = new Image(urlResetStream);
         ImageView resetButton = new ImageView(image);
-        resetButton.setFitHeight(30);
-        resetButton.setFitWidth(30);
-        resetButton.setLayoutX(AppConsts.BORDER_START_X + 200);
-        resetButton.setLayoutY(AppConsts.BORDER_START_Y - 35);
+        resetButton.setFitHeight(IMAGE_BUTTON_SIZE - 3);
+        resetButton.setFitWidth(IMAGE_BUTTON_SIZE - 3);
+        resetButton.setLayoutX(AppConsts.BORDER_START_X + 230);
+        resetButton.setLayoutY(AppConsts.BORDER_START_Y - 30);
         resetButton.setOnMouseClicked(mouseEvent -> {
             manage();
             setUi();
@@ -45,12 +52,15 @@ public class PlayWindow extends Stage {
         InputStream urlPromptStream = UrlUtil.getURLStream("images/prompt.png");
         Image promptImage = new Image(urlPromptStream);
         ImageView promptButton = new ImageView(promptImage);
-        promptButton.setFitHeight(30);
-        promptButton.setFitWidth(30);
-        promptButton.setLayoutX(AppConsts.BORDER_START_X + 260);
-        promptButton.setLayoutY(AppConsts.BORDER_START_Y - 35);
-        promptButton.setOnMouseClicked(mouseEvent -> {
-
+        promptButton.setFitHeight(IMAGE_BUTTON_SIZE);
+        promptButton.setFitWidth(IMAGE_BUTTON_SIZE);
+        promptButton.setLayoutX(AppConsts.BORDER_START_X + 270);
+        promptButton.setLayoutY(AppConsts.BORDER_START_Y - 31.5);
+        promptButton.setOnMousePressed(mouseEvent -> {
+            factory.getReferenceImage().setVisible(true);
+        });
+        promptButton.setOnMouseReleased(mouseEvent -> {
+            factory.getReferenceImage().setVisible(false);
         });
 
         anchorPane.getChildren().add(resetButton);

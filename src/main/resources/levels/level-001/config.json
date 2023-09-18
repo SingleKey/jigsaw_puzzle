@@ -2,6 +2,7 @@
   "name": "《美女油画》",
   "num": 9,
   "type": "shuffle",
+  "reference": "g.png",
   "answer": [
     "split/g1.gif",
     "split/g2.gif",

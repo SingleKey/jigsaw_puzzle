@@ -30,6 +30,7 @@ public class ConfigUtil {
         int num = jsonObject.getIntValue("num");
         String deletion = jsonObject.getString("deletion");
         String name = jsonObject.getString("name");
+        String reference = jsonObject.getString("reference");
         JSONArray answerObjs = jsonObject.getJSONArray("answer");
         String[] answer = new String[answerObjs.size()];
         for (int i = 0; i < answerObjs.size(); i++) {
@@ -38,6 +39,7 @@ public class ConfigUtil {
 
         config.put("num", num);
         config.put("name", name);
+        config.put("reference", reference);
         config.put("deletion", deletion);
         config.put("answer", answer);
 
