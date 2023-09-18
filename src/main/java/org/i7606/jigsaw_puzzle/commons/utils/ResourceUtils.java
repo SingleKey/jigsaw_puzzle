@@ -1,4 +1,4 @@
-package org.i7606.jigsaw_puzzle.window.play;
+package org.i7606.jigsaw_puzzle.commons.utils;
 
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
