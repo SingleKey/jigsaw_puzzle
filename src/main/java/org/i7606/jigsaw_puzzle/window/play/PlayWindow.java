@@ -5,6 +5,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import org.i7606.jigsaw_puzzle.commons.AppConsts;
 import org.i7606.jigsaw_puzzle.commons.utils.UrlUtil;
@@ -33,6 +34,11 @@ public class PlayWindow extends Stage {
 
     private void setUi() {
         AnchorPane anchorPane = factory.getAnchorPane();
+
+//        HBox optionButtons = new HBox();
+//        optionButtons.setSpacing(10);
+//        optionButtons.set
+
         // 添加操作按钮
         InputStream urlResetStream = UrlUtil.getURLStream("images/reset.png");
         Image image = new Image(urlResetStream);
@@ -75,7 +81,9 @@ public class PlayWindow extends Stage {
     }
 
     private void manage() {
-        factory = new LevelBuild("level-001", this);
+        String no1 = "level-001";
+//        String no1 = "level-002";
+        factory = new LevelBuild(no1, this);
         factory.build();
     }
 

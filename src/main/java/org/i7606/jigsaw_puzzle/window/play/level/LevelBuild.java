@@ -17,6 +17,7 @@ import javafx.util.Duration;
 import org.i7606.jigsaw_puzzle.commons.AppConsts;
 import org.i7606.jigsaw_puzzle.commons.utils.ConfigUtil;
 import org.i7606.jigsaw_puzzle.commons.utils.UrlUtil;
+import org.i7606.jigsaw_puzzle.window.play.HappyWindow;
 
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -36,6 +37,7 @@ public class LevelBuild {
     private String deletion;
     private String name;
     private String reference;
+    private int num;
     private HashMap<Group, String> imagesMap = new HashMap<>();
     private HashMap<String, Group> gameMap = new HashMap<>();
     private ArrayList<Group> entitys = new ArrayList<>();
@@ -43,6 +45,7 @@ public class LevelBuild {
     // 棋盘空坐标
     private int emptyX = 0;
     private int emptyY = 0;
+    private int cardSize = 0;
 
     // 窗口组件
     private AnchorPane anchorPane;
@@ -114,7 +117,7 @@ public class LevelBuild {
         reference = (String) config.get("reference");
 
         // 创建棋盘
-        createCheckerboard((Integer) config.get("num"));
+        createCheckerboard(num = (Integer) config.get("num"));
         // 加载资源
         loadImages();
         // 布局
@@ -131,13 +134,16 @@ public class LevelBuild {
             }
         }
         Collections.shuffle(names);
+
+        int cardSize = getCardSize();
+
         int n = 0;
         for (int i = 0; i < checkerboard.length; i++) {
             for (int i1 = 0; i1 < checkerboard[i].length; i1++, ++ n) {
                 checkerboard[i][i1] = names.get(n);
                 // 设置位置
-                int currentEntityX = AppConsts.BORDER_START_X + OFFSET1 + ((AppConsts.CARD_SIZE + OFFSET2) * i1);
-                int currentEntityY = AppConsts.BORDER_START_Y + OFFSET1 + ((AppConsts.CARD_SIZE + OFFSET2) * i);
+                int currentEntityX = AppConsts.BORDER_START_X + OFFSET1 + ((cardSize + OFFSET2) * i1);
+                int currentEntityY = AppConsts.BORDER_START_Y + OFFSET1 + ((cardSize + OFFSET2) * i);
                 Group group = gameMap.get(checkerboard[i][i1]);
                 if (group == null) {
                     emptyX = i1;
@@ -159,12 +165,14 @@ public class LevelBuild {
             Image bufferedImage = new Image(urlStream);
             Group group = new Group();
             ImageView imageView = new ImageView(bufferedImage);
-            imageView.setFitWidth(AppConsts.CARD_SIZE);
-            imageView.setFitHeight(AppConsts.CARD_SIZE);
+            int cardSize = getCardSize();
+            imageView.setFitWidth(cardSize);
+            imageView.setFitHeight(cardSize);
             imageView.setOnMouseClicked(mouseEvent -> {
                 move(group);
                 if (isWin()) {
                     System.out.println("你赢了！");
+                    new HappyWindow("提示", "恭喜，您已完成拼图！", stage).show();
                 }
             });
             group.getChildren().add(imageView);
@@ -172,6 +180,19 @@ public class LevelBuild {
             gameMap.put(answer[i], group);
             entitys.add(group);
         }
+    }
+
+    private int getCardSize() {
+        if (cardSize == 0) {
+            if (num == 9) {
+                cardSize = (AppConsts.BORDER_SIZE - (AppConsts.BORDER_WEIGHT << 1)) / 3;
+            } else if (num == 16) {
+                cardSize = (AppConsts.BORDER_SIZE - (AppConsts.BORDER_WEIGHT << 1)) / 4;
+            } else {
+                throw new RuntimeException("暂不支持该num数量");
+            }
+        }
+        return cardSize;
     }
 
     private void createCheckerboard(int num) {
@@ -209,12 +230,17 @@ public class LevelBuild {
             return;
         }
         // 动画
-        final double OFFSET3 = 24.2;
-        double sEntityX = ((AppConsts.BORDER_START_X + OFFSET1 + ((AppConsts.CARD_SIZE + OFFSET2) * curX)) >> 1) + OFFSET3;
-        double sEntityY = ((AppConsts.BORDER_START_Y + OFFSET1 + ((AppConsts.CARD_SIZE + OFFSET2) * curY)) >> 1)+ OFFSET3;
+        final int cardSize = getCardSize();
+        double offset3 = 24.2;
+        if (num == 16) {
+            offset3 = 18.2;
+        }
 
-        double nEntityX = ((AppConsts.BORDER_START_X + OFFSET1 + ((AppConsts.CARD_SIZE + OFFSET2) * emptyX)) >> 1) + OFFSET3;
-        double nEntityY = ((AppConsts.BORDER_START_Y + OFFSET1 + ((AppConsts.CARD_SIZE + OFFSET2) * emptyY)) >> 1) + OFFSET3;
+        double sEntityX = ((AppConsts.BORDER_START_X + OFFSET1 + ((cardSize + OFFSET2) * curX)) >> 1) + offset3;
+        double sEntityY = ((AppConsts.BORDER_START_Y + OFFSET1 + ((cardSize + OFFSET2) * curY)) >> 1) + offset3;
+
+        double nEntityX = ((AppConsts.BORDER_START_X + OFFSET1 + ((cardSize + OFFSET2) * emptyX)) >> 1) + offset3;
+        double nEntityY = ((AppConsts.BORDER_START_Y + OFFSET1 + ((cardSize + OFFSET2) * emptyY)) >> 1) + offset3;
 
         Path path = new Path();
         path.getElements().add(new MoveTo(sEntityX, sEntityY));

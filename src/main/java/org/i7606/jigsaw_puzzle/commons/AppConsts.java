@@ -23,9 +23,9 @@ public interface AppConsts {
     /**
      * 边框厚度
      */
-    int BORDER_WEIGHT = 10;
+    int BORDER_WEIGHT = 6;
     /**
      * 小正方形大小
      */
-    int CARD_SIZE = 95;
+//    int CARD_SIZE = 95;
 }
