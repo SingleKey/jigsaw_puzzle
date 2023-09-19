@@ -2,6 +2,7 @@ package org.i7606.jigsaw_puzzle.window.play.scenes;
 
 import cn.hutool.core.util.StrUtil;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
@@ -9,8 +10,10 @@ import org.i7606.jigsaw_puzzle.commons.AppConsts;
 import org.i7606.jigsaw_puzzle.commons.AppVals;
 import org.i7606.jigsaw_puzzle.commons.utils.ConfigUtil;
 import org.i7606.jigsaw_puzzle.commons.utils.ImageUtil;
+import org.i7606.jigsaw_puzzle.commons.utils.UrlUtil;
 import org.i7606.jigsaw_puzzle.window.play.PlayWindow;
 
+import java.io.InputStream;
 import java.util.HashMap;
 
 /**
@@ -37,7 +40,7 @@ public class SelectionGameScene extends Scene {
     }
 
     private void init() {
-        addTitle();
+        addView();
         loadConfig();
     }
 
@@ -71,13 +74,24 @@ public class SelectionGameScene extends Scene {
         hBox.setLayoutX((AppConsts.WINDOW_WIDTH - 350) >> 1);
     }
 
-    private void addTitle() {
+    private void addView() {
         ImageView textImage = ImageUtil.getImageView("images/tips.png");
         textImage.setFitWidth(TEXT_IMAGE_WIDTH);
         textImage.setFitHeight(TEXT_IMAGE_HEIGHT);
         textImage.setLayoutX(TEXT_IMAGE_LOCATION_X);
         textImage.setLayoutY(TEXT_IMAGE_LOCATION_Y);
-        anchorPane.getChildren().add(textImage);
+
+        // 添加操作按钮
+        ImageView closeGameImageButton = ImageUtil.getImageView("images/close_game.png");
+        closeGameImageButton.setFitHeight(AppConsts.IMAGE_BUTTON_SIZE - 3);
+        closeGameImageButton.setFitWidth(AppConsts.IMAGE_BUTTON_SIZE - 3);
+        closeGameImageButton.setLayoutX(10);
+        closeGameImageButton.setLayoutY(10);
+        closeGameImageButton.setOnMouseClicked(mouseEvent -> {
+            PlayWindow.playWindow.showMain();
+        });
+
+        anchorPane.getChildren().addAll(closeGameImageButton, textImage);
     }
 
     public AnchorPane getAnchorPane() {

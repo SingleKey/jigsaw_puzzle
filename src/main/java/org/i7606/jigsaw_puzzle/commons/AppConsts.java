@@ -37,6 +37,11 @@ public interface AppConsts {
     int HOME_BUTTON_LOCATION_X = (WINDOW_WIDTH  - HOME_BUTTON_WIDTH) >> 1;
     int HOME_BUTTON_LOCATION_Y = 170;
 
+    /**
+     * 图片按钮大小
+     */
+    int IMAGE_BUTTON_SIZE = 25;
+
     //f3ae46
     //fe9800
 }

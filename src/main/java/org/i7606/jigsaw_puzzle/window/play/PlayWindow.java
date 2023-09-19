@@ -78,6 +78,17 @@ public class PlayWindow extends Stage {
         anchorPane.getChildren().addAll(homeIconView, playButton, closeButton);
     }
 
+    public void showGameMenu() {
+        setScene(selectionGameScene);
+        factory = null;
+        System.gc();
+    }
+    public void showMain() {
+        setScene(scene);
+        factory = null;
+        System.gc();
+    }
+
     public void initGameUI() {
         factory = new LevelBuild(AppVals.levelName, this);
         factory.build();
@@ -93,9 +104,7 @@ public class PlayWindow extends Stage {
         closeGameImageButton.setLayoutX(10);
         closeGameImageButton.setLayoutY(10);
         closeGameImageButton.setOnMouseClicked(mouseEvent -> {
-            setScene(scene);
-            factory = null;
-            System.gc();
+            showGameMenu();
         });
 
         // 添加操作按钮
@@ -127,9 +136,7 @@ public class PlayWindow extends Stage {
             factory.getReferenceImage().setVisible(false);
         });
 
-        anchorPane.getChildren()
-                .addAll(closeGameImageButton, resetButton, promptButton);
-        selectionGameScene.getAnchorPane().getChildren().add(closeGameImageButton);
+        anchorPane.getChildren().addAll(closeGameImageButton, resetButton, promptButton);
     }
 
 }
