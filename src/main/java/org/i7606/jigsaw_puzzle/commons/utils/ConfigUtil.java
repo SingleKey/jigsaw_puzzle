@@ -19,12 +19,47 @@ import java.util.HashMap;
 public class ConfigUtil {
 
     public static HashMap<String, Object> getConfig(String levelName) {
-        InputStream urlStream = UrlUtil.getURLStream(levelName + "/config.json");
-        if (urlStream == null) {
-            throw new RuntimeException("不存在配置文件：" + levelName + "/config.json");
-        }
 
+        String jsonString = readJsonObject(levelName + "/config.json");
+        JSONObject jsonObject = (JSONObject) JSON.parse(jsonString);
+
+        int num = jsonObject.getIntValue("num");
+        String deletion = jsonObject.getString("deletion");
+        String name = jsonObject.getString("name");
+        String reference = jsonObject.getString("reference");
+        JSONArray answerObjs = jsonObject.getJSONArray("answer");
+        String[] answer = new String[answerObjs.size()];
+        for (int i = 0; i < answerObjs.size(); i++) {
+            answer[i] = answerObjs.getString(i);
+        }
         HashMap<String, Object> config = new HashMap<>();
+        config.put("num", num);
+        config.put("name", name);
+        config.put("reference", reference);
+        config.put("deletion", deletion);
+        config.put("answer", answer);
+
+        return config;
+    }
+
+    public static HashMap<String, Object> getLevelsConfig() {
+        String jsonString = readJsonObject("levels.json");
+        JSONObject jsonObject = (JSONObject) JSON.parse(jsonString);
+        JSONArray objects = jsonObject.getJSONArray("levels");
+        String[] levels = new String[objects.size()];
+        for (int i = 0; i < objects.size(); i++) {
+            levels[i] = objects.getString(i);
+        }
+        HashMap<String, Object> hashMap = new HashMap<>();
+        hashMap.put("levels", levels);
+        return hashMap;
+    }
+
+    private static String readJsonObject(String configPath) {
+        InputStream urlStream = UrlUtil.getURLStream(configPath);
+        if (urlStream == null) {
+            throw new RuntimeException("不存在配置文件：" + configPath);
+        }
 
         StringBuffer out = new StringBuffer();
         try {
@@ -41,25 +76,6 @@ public class ConfigUtil {
             throw new RuntimeException(e);
         }
 
-        String jsonString = out.toString();
-        JSONObject jsonObject = (JSONObject) JSON.parse(jsonString);
-
-        int num = jsonObject.getIntValue("num");
-        String deletion = jsonObject.getString("deletion");
-        String name = jsonObject.getString("name");
-        String reference = jsonObject.getString("reference");
-        JSONArray answerObjs = jsonObject.getJSONArray("answer");
-        String[] answer = new String[answerObjs.size()];
-        for (int i = 0; i < answerObjs.size(); i++) {
-            answer[i] = answerObjs.getString(i);
-        }
-
-        config.put("num", num);
-        config.put("name", name);
-        config.put("reference", reference);
-        config.put("deletion", deletion);
-        config.put("answer", answer);
-
-        return config;
+        return out.toString();
     }
 }

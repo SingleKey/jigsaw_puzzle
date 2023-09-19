@@ -1,9 +1,7 @@
 {
   "levels": [
-    "level-001",
-    "level-002",
-    "level-003",
-    "level-004",
-    "level-005"
+    "level-test:数字",
+    "level-001:油画美女",
+    "level-002:天空"
   ]
 }

@@ -28,4 +28,15 @@ public interface AppConsts {
      * 小正方形大小
      */
 //    int CARD_SIZE = 95;
+    int HOME_ICON_SIZE = 90;
+    int HOME_ICON_LOCATION_X = (WINDOW_WIDTH  - HOME_ICON_SIZE) >> 1;
+    int HOME_ICON_LOCATION_Y = 30;
+
+    int HOME_BUTTON_WIDTH = 150;
+    int HOME_BUTTON_HEIGHT = 37;
+    int HOME_BUTTON_LOCATION_X = (WINDOW_WIDTH  - HOME_BUTTON_WIDTH) >> 1;
+    int HOME_BUTTON_LOCATION_Y = 170;
+
+    //f3ae46
+    //fe9800
 }
