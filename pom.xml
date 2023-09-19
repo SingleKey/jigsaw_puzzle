@@ -94,7 +94,7 @@
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                                     <!--启动类-->
-                                    <mainClass>org.i7606.jigsaw_puzzle.window.main.MainWindow</mainClass>
+                                    <mainClass>org.i7606.jigsaw_puzzle.AppStater</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>
