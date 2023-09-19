@@ -189,7 +189,7 @@ public class LevelBuild {
             } else if (num == 16) {
                 cardSize = (AppConsts.BORDER_SIZE - (AppConsts.BORDER_WEIGHT << 1)) / 4;
             } else {
-                throw new RuntimeException("暂不支持该num数量");
+                throw new RuntimeException("暂不支持该num数量！");
             }
         }
         return cardSize;

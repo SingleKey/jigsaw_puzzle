@@ -8,8 +8,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.i7606.jigsaw_puzzle.commons.AppConsts;
+import org.i7606.jigsaw_puzzle.commons.utils.ImageUtil;
 import org.i7606.jigsaw_puzzle.commons.utils.UrlUtil;
 import org.i7606.jigsaw_puzzle.window.play.level.LevelBuild;
+import org.i7606.jigsaw_puzzle.window.play.scenes.SelectionGameScene;
 
 import java.io.InputStream;
 
@@ -27,10 +29,13 @@ public class PlayWindow extends Stage {
     private LevelBuild factory;
     private AnchorPane anchorPane;
     private Scene scene;
+    private Scene gameSelectionScene;
 
     public PlayWindow() {
         initWindow();
-        initHomeUi();
+        scene = new SelectionGameScene();
+        setScene(scene);
+//        initHomeUi();
     }
     private void initWindow() {
         setTitle("拼图画板");
@@ -45,14 +50,14 @@ public class PlayWindow extends Stage {
         scene = new Scene(anchorPane);
         setScene(scene);
 
-        ImageView homeIconView = getImageView("images/home_icon.png");
+        ImageView homeIconView = ImageUtil.getImageView("images/home_icon.png");
         homeIconView.setFitHeight(AppConsts.HOME_ICON_SIZE);
         homeIconView.setFitWidth(AppConsts.HOME_ICON_SIZE);
         homeIconView.setLayoutX(AppConsts.HOME_ICON_LOCATION_X);
         homeIconView.setLayoutY(AppConsts.HOME_ICON_LOCATION_Y);
 
         final int LOCATION_Y_OFFSET = 60;
-        ImageView playButton = getHomeButton("images/play.png");
+        ImageView playButton = ImageUtil.getHomeButton("images/play.png");
         playButton.setLayoutX(AppConsts.HOME_BUTTON_LOCATION_X);
         playButton.setLayoutY(AppConsts.HOME_BUTTON_LOCATION_Y);
         playButton.setOnMouseClicked(mouseEvent -> {
@@ -60,7 +65,7 @@ public class PlayWindow extends Stage {
             initGameUI();
         });
 
-        ImageView closeButton = getHomeButton("images/close.png");
+        ImageView closeButton = ImageUtil.getHomeButton("images/close.png");
         closeButton.setLayoutX(AppConsts.HOME_BUTTON_LOCATION_X);
         closeButton.setLayoutY(AppConsts.HOME_BUTTON_LOCATION_Y + LOCATION_Y_OFFSET);
         closeButton.setOnMouseClicked(mouseEvent -> {
@@ -70,18 +75,7 @@ public class PlayWindow extends Stage {
         anchorPane.getChildren().addAll(homeIconView, playButton, closeButton);
     }
 
-    private ImageView getHomeButton(String imagePath) {
-        ImageView imageView = getImageView(imagePath);
-        imageView.setFitWidth(AppConsts.HOME_BUTTON_WIDTH);
-        imageView.setFitHeight(AppConsts.HOME_BUTTON_HEIGHT);
-        return imageView;
-    }
 
-    private ImageView getImageView(String imagePath) {
-        InputStream urlStream = UrlUtil.getURLStream(imagePath);
-        Image image = new Image(urlStream);
-        return new ImageView(image);
-    }
 
     private void initGameUI() {
 //        tring levelNamme = "level-001";
@@ -95,6 +89,20 @@ public class PlayWindow extends Stage {
 //        HBox optionButtons = new HBox();
 //        optionButtons.setSpacing(10);
 //        optionButtons.set
+
+        // 添加操作按钮
+        InputStream urlCloseGameStream = UrlUtil.getURLStream("images/close_game.png");
+        Image closeGameImage = new Image(urlCloseGameStream);
+        ImageView closeGameImageButton = new ImageView(closeGameImage);
+        closeGameImageButton.setFitHeight(IMAGE_BUTTON_SIZE - 3);
+        closeGameImageButton.setFitWidth(IMAGE_BUTTON_SIZE - 3);
+        closeGameImageButton.setLayoutX(10);
+        closeGameImageButton.setLayoutY(10);
+        closeGameImageButton.setOnMouseClicked(mouseEvent -> {
+            setScene(scene);
+            factory = null;
+            System.gc();
+        });
 
         // 添加操作按钮
         InputStream urlResetStream = UrlUtil.getURLStream("images/reset.png");
@@ -125,7 +133,8 @@ public class PlayWindow extends Stage {
             factory.getReferenceImage().setVisible(false);
         });
 
-        anchorPane.getChildren().addAll(resetButton, promptButton);
+        anchorPane.getChildren()
+                .addAll(closeGameImageButton, resetButton, promptButton);
     }
 
 }
