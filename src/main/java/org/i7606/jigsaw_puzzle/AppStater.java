@@ -10,6 +10,6 @@ import org.i7606.jigsaw_puzzle.window.main.MainWindow;
 public class AppStater {
 
     public static void main(String[] args) {
-        Application.launch(MainWindow.class, args);
+        Application.launch(MainWindow.class);
     }
 }

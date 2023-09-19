@@ -30,7 +30,6 @@
             <list>.*.css$</list>
             <list>.*.json$</list>
             <list>.*.gif$</list>
-            <list>.*.gif$</list>
           </resourcesList>
           <attachList>
             <list>display</list>
@@ -66,7 +65,7 @@
     <charm.version>6.2.2</charm.version>
     <attach.version>4.0.16</attach.version>
     <maven.compiler.target>17</maven.compiler.target>
-    <main.class>org.i7606.jigsaw_puzzle.window.main.MainWindow</main.class>
+    <main.class>org.i7606.jigsaw_puzzle.AppStater</main.class>
     <maven.compiler.source>17</maven.compiler.source>
     <gluonfx.plugin.version>1.0.16</gluonfx.plugin.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
