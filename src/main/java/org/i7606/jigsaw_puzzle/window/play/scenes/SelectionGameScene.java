@@ -1,17 +1,16 @@
 package org.i7606.jigsaw_puzzle.window.play.scenes;
 
 import cn.hutool.core.util.StrUtil;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import org.i7606.jigsaw_puzzle.commons.AppConsts;
+import org.i7606.jigsaw_puzzle.commons.AppVals;
 import org.i7606.jigsaw_puzzle.commons.utils.ConfigUtil;
 import org.i7606.jigsaw_puzzle.commons.utils.ImageUtil;
+import org.i7606.jigsaw_puzzle.window.play.PlayWindow;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -31,8 +30,6 @@ public class SelectionGameScene extends Scene {
      * 用户选择的关卡
      */
     private String[] levels;
-    private ArrayList<String> levelPreImages;
-    private String userSelect;
     public SelectionGameScene() {
         super(new AnchorPane());
         anchorPane = (AnchorPane) getRoot();
@@ -50,7 +47,6 @@ public class SelectionGameScene extends Scene {
         if (levels == null || levels.length == 0) {
             throw new RuntimeException("请添加关卡资源！");
         }
-        levelPreImages = new ArrayList<>();
         HBox hBox = new HBox();
         hBox.setSpacing(20);
         anchorPane.getChildren().add(hBox);
@@ -65,7 +61,8 @@ public class SelectionGameScene extends Scene {
                 }
                 LevelItem levelItem = new LevelItem(levelName, levelCnName, "levels/" + levelName + "/" + preView);
                 levelItem.setOnMouseClicked(mouseEvent -> {
-                    userSelect = levelItem.getLevelName();
+                    AppVals.levelName = levelItem.getLevelName();
+                    PlayWindow.playWindow.initGameUI();
                 });
                 hBox.getChildren().add(levelItem);
             }
@@ -83,4 +80,7 @@ public class SelectionGameScene extends Scene {
         anchorPane.getChildren().add(textImage);
     }
 
+    public AnchorPane getAnchorPane() {
+        return anchorPane;
+    }
 }

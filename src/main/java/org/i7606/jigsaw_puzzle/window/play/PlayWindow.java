@@ -8,6 +8,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.i7606.jigsaw_puzzle.commons.AppConsts;
+import org.i7606.jigsaw_puzzle.commons.AppVals;
 import org.i7606.jigsaw_puzzle.commons.utils.ImageUtil;
 import org.i7606.jigsaw_puzzle.commons.utils.UrlUtil;
 import org.i7606.jigsaw_puzzle.window.play.level.LevelBuild;
@@ -20,6 +21,7 @@ import java.io.InputStream;
  * @Date 2023/9/16 16:10
  */
 public class PlayWindow extends Stage {
+    public static PlayWindow playWindow;
 
     /**
      * 图片按钮大小
@@ -29,13 +31,12 @@ public class PlayWindow extends Stage {
     private LevelBuild factory;
     private AnchorPane anchorPane;
     private Scene scene;
-    private Scene gameSelectionScene;
+    private SelectionGameScene selectionGameScene;
 
     public PlayWindow() {
+        playWindow = this;
         initWindow();
-        scene = new SelectionGameScene();
-        setScene(scene);
-//        initHomeUi();
+        initHomeUi();
     }
     private void initWindow() {
         setTitle("拼图画板");
@@ -50,6 +51,9 @@ public class PlayWindow extends Stage {
         scene = new Scene(anchorPane);
         setScene(scene);
 
+        // 初始话游戏选择菜单
+        selectionGameScene=  new SelectionGameScene();
+
         ImageView homeIconView = ImageUtil.getImageView("images/home_icon.png");
         homeIconView.setFitHeight(AppConsts.HOME_ICON_SIZE);
         homeIconView.setFitWidth(AppConsts.HOME_ICON_SIZE);
@@ -61,8 +65,7 @@ public class PlayWindow extends Stage {
         playButton.setLayoutX(AppConsts.HOME_BUTTON_LOCATION_X);
         playButton.setLayoutY(AppConsts.HOME_BUTTON_LOCATION_Y);
         playButton.setOnMouseClicked(mouseEvent -> {
-            // 还有选择关卡步骤，做个弹窗选择关卡...
-            initGameUI();
+            setScene(selectionGameScene);
         });
 
         ImageView closeButton = ImageUtil.getHomeButton("images/close.png");
@@ -75,20 +78,11 @@ public class PlayWindow extends Stage {
         anchorPane.getChildren().addAll(homeIconView, playButton, closeButton);
     }
 
-
-
-    private void initGameUI() {
-//        tring levelNamme = "level-001";
-//        String levelNamme = "level-002";
-        String levelNamme = "level-test";
-        factory = new LevelBuild(levelNamme, this);
+    public void initGameUI() {
+        factory = new LevelBuild(AppVals.levelName, this);
         factory.build();
 
         AnchorPane anchorPane = factory.getAnchorPane();
-
-//        HBox optionButtons = new HBox();
-//        optionButtons.setSpacing(10);
-//        optionButtons.set
 
         // 添加操作按钮
         InputStream urlCloseGameStream = UrlUtil.getURLStream("images/close_game.png");
@@ -135,6 +129,7 @@ public class PlayWindow extends Stage {
 
         anchorPane.getChildren()
                 .addAll(closeGameImageButton, resetButton, promptButton);
+        selectionGameScene.getAnchorPane().getChildren().add(closeGameImageButton);
     }
 
 }
