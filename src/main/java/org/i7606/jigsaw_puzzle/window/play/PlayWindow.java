@@ -89,7 +89,6 @@ public class PlayWindow extends Stage {
 
     public void initGameUI() {
         factory = new PlayGameScene(AppVals.levelName, this);
-        factory.build();
 
         AnchorPane anchorPane = factory.getAnchorPane();
 
