@@ -10,7 +10,7 @@ import org.i7606.jigsaw_puzzle.commons.utils.ImageUtil;
  * @Date 2023/9/20 0:40
  */
 public class LevelItem extends AnchorPane {
-    private final int BORDER_SIZE = 100;
+    public static final int BORDER_SIZE = 100;
     private ImageView imageView;
     private Label nameLabel;
     private String levelName;

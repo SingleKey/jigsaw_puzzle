@@ -1,0 +1,25 @@
+{
+  "name": "《油画》",
+  "num": 16,
+  "type": "shuffle",
+  "reference": "q.jpg",
+  "answer": [
+    "split/s_01.gif",
+    "split/s_02.gif",
+    "split/s_03.gif",
+    "split/s_04.gif",
+    "split/s_05.gif",
+    "split/s_06.gif",
+    "split/s_07.gif",
+    "split/s_08.gif",
+    "split/s_09.gif",
+    "split/s_10.gif",
+    "split/s_11.gif",
+    "split/s_12.gif",
+    "split/s_13.gif",
+    "split/s_14.gif",
+    "split/s_15.gif",
+    "split/s_16.gif"
+  ],
+  "deletion": "split/s_13.gif"
+}

@@ -123,20 +123,17 @@ public class PlayGameScene extends Scene {
         // 洗牌
         ArrayList<String> names = new ArrayList<>();
         for (int i = 0; i < answer.length; i++) {
-//            if ( StrUtil.isBlank(deletion) || ! deletion.equals(answer[i])) {
-//                names.add(answer[i]);
-//            } else {
-//                names.add(null);
-//            }
-            names.add(answer[i]);
+            if ( StrUtil.isBlank(deletion) || ! deletion.equals(answer[i])) {
+                names.add(answer[i]);
+            } else {
+                names.add(null);
+            }
         }
         // 取有解的局
         do {
             Collections.shuffle(names);
         }
         while ( ! isCanWin(names));
-        names.remove(deletion);
-        names.add(null);
 
         int cardSize = getCardSize();
 
@@ -153,7 +150,6 @@ public class PlayGameScene extends Scene {
                     emptyY = i;
                     continue;
                 }
-//                System.out.println(currentEntityX + ", " + currentEntityY);
                 group.setLayoutX(currentEntityX);
                 group.setLayoutY(currentEntityY);
             }
@@ -172,10 +168,11 @@ public class PlayGameScene extends Scene {
                     continue;
                 }
                 if (nameIndexMap.get(names.get(i)) > nameIndexMap.get(names.get(j))) {
-                    ++ count;
+                    count++;
                 }
             }
         }
+//        System.out.println("count=" + count);
         return count % 2 == 0;
     }
 

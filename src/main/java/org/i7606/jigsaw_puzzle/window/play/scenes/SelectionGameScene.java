@@ -1,6 +1,7 @@
 package org.i7606.jigsaw_puzzle.window.play.scenes;
 
 import cn.hutool.core.util.StrUtil;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -52,6 +53,7 @@ public class SelectionGameScene extends Scene {
         }
         HBox hBox = new HBox();
         hBox.setSpacing(20);
+        hBox.setAlignment(Pos.CENTER_LEFT);
         anchorPane.getChildren().add(hBox);
         for (int i = 0; i < levels.length; i++) {
             if (StrUtil.isNotBlank(levels[i])) {
@@ -71,7 +73,10 @@ public class SelectionGameScene extends Scene {
             }
         }
         hBox.setLayoutY(200);
-        hBox.setLayoutX((AppConsts.WINDOW_WIDTH - 350) >> 1);
+        hBox.setLayoutX(AppConsts.WINDOW_WIDTH - ((LevelItem.BORDER_SIZE + 17) * hBox.getChildren().size()) >> 1);
+        hBox.setMinWidth(AppConsts.WINDOW_WIDTH);
+        hBox.setMaxWidth(AppConsts.WINDOW_WIDTH);
+        hBox.setPrefWidth(AppConsts.WINDOW_WIDTH);
     }
 
     private void addView() {
