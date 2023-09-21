@@ -123,13 +123,20 @@ public class PlayGameScene extends Scene {
         // 洗牌
         ArrayList<String> names = new ArrayList<>();
         for (int i = 0; i < answer.length; i++) {
-            if ( StrUtil.isBlank(deletion) || ! deletion.equals(answer[i])) {
-                names.add(answer[i]);
-            } else {
-                names.add(null);
-            }
+//            if ( StrUtil.isBlank(deletion) || ! deletion.equals(answer[i])) {
+//                names.add(answer[i]);
+//            } else {
+//                names.add(null);
+//            }
+            names.add(answer[i]);
         }
-        Collections.shuffle(names);
+        // 取有解的局
+        do {
+            Collections.shuffle(names);
+        }
+        while ( ! isCanWin(names));
+        names.remove(deletion);
+        names.add(null);
 
         int cardSize = getCardSize();
 
@@ -151,6 +158,25 @@ public class PlayGameScene extends Scene {
                 group.setLayoutY(currentEntityY);
             }
         }
+    }
+
+    private boolean isCanWin(ArrayList<String> names) {
+        HashMap<String, Integer> nameIndexMap = new HashMap<>();
+        for (int i = 0; i < answer.length; i++) {
+            nameIndexMap.put(answer[i], i);
+        }
+        int count = 0;
+        for (int i = 0; i < names.size() - 1; i++) {
+            for (int j = i + 1; j < names.size(); j++) {
+                if (names.get(i) == null || names.get(j) == null) {
+                    continue;
+                }
+                if (nameIndexMap.get(names.get(i)) > nameIndexMap.get(names.get(j))) {
+                    ++ count;
+                }
+            }
+        }
+        return count % 2 == 0;
     }
 
     private void loadImages() {
