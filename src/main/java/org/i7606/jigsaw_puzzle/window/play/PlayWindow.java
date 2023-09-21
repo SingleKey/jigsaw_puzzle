@@ -1,17 +1,15 @@
 package org.i7606.jigsaw_puzzle.window.play;
 
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.i7606.jigsaw_puzzle.commons.AppConsts;
 import org.i7606.jigsaw_puzzle.commons.AppVals;
 import org.i7606.jigsaw_puzzle.commons.utils.ImageUtil;
 import org.i7606.jigsaw_puzzle.commons.utils.UrlUtil;
-import org.i7606.jigsaw_puzzle.window.play.level.LevelBuild;
+import org.i7606.jigsaw_puzzle.window.play.scenes.PlayGameScene;
 import org.i7606.jigsaw_puzzle.window.play.scenes.SelectionGameScene;
 
 import java.io.InputStream;
@@ -28,7 +26,7 @@ public class PlayWindow extends Stage {
      */
     private final int IMAGE_BUTTON_SIZE = 25;
 
-    private LevelBuild factory;
+    private PlayGameScene factory;
     private AnchorPane anchorPane;
     private Scene scene;
     private SelectionGameScene selectionGameScene;
@@ -90,7 +88,7 @@ public class PlayWindow extends Stage {
     }
 
     public void initGameUI() {
-        factory = new LevelBuild(AppVals.levelName, this);
+        factory = new PlayGameScene(AppVals.levelName, this);
         factory.build();
 
         AnchorPane anchorPane = factory.getAnchorPane();

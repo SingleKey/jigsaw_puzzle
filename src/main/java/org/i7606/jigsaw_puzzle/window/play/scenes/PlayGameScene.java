@@ -1,4 +1,4 @@
-package org.i7606.jigsaw_puzzle.window.play.level;
+package org.i7606.jigsaw_puzzle.window.play.scenes;
 
 import cn.hutool.core.util.StrUtil;
 import javafx.animation.PathTransition;
@@ -28,7 +28,7 @@ import java.util.HashMap;
  * @Author SingleKey
  * @Date 2023/9/17 14:47
  */
-public class LevelBuild {
+public class PlayGameScene extends Scene {
     final int OFFSET1 = 6;
     final int OFFSET2 = 1;
     private final Stage stage;
@@ -52,20 +52,16 @@ public class LevelBuild {
     // 参考图
     private ImageView referenceImage;
 
-    public LevelBuild(String levelName, Stage stage) {
+    public PlayGameScene(String levelName, Stage stage) {
+        super(new AnchorPane());
         this.configPath = "levels/" + levelName;
         this.stage = stage;
         loadResource();
+        initView();
     }
 
-//    @Override
-//    protected void finalize() throws Throwable {
-//        super.finalize();
-//        System.out.println(System.currentTimeMillis());
-//    }
-
-    public void build() {
-        anchorPane = new AnchorPane();
+    private void initView() {
+        anchorPane = (AnchorPane) getRoot();
 
         // 设置名称和重置按钮等
         Label label = new Label(name);
@@ -106,7 +102,7 @@ public class LevelBuild {
         // 最后添加，不然会被小方块覆盖
         anchorPane.getChildren().add(referenceImage);
 
-        stage.setScene(new Scene(anchorPane));
+        stage.setScene(this);
     }
 
     private void loadResource() {
