@@ -129,7 +129,6 @@ public class PlayGameScene extends Scene {
                 names.add(null);
             }
         }
-        // 取有解的局
         do {
             Collections.shuffle(names);
         }
